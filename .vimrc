@@ -6,93 +6,91 @@ filetype indent plugin on
 syntax on
 
 call plug#begin('~/.vim/plugged')
+  "{{ vim-gitgo: Colorschem for go
+  " Plug 'bitfield/vim-gitgo'
+  "}}
 
-    "{{ vim-gitgo: Colorschem for go
-    " Plug 'bitfield/vim-gitgo'
-    "}}
+  "{{ vim-go: Plugins for go.
+  Plug 'fatih/vim-go'
+  "}}
 
-    "{{ vim-go: Plugins for go.
-    Plug 'fatih/vim-go'
-    "}}
+  "{{
+  Plug 'fatih/molokai'
+  Plug 'morhetz/gruvbox'
+  "}}
 
-    "{{
-    Plug 'fatih/molokai'
-    Plug 'morhetz/gruvbox'
-    "}}
+  Plug 'edkolev/tmuxline.vim'
+  Plug 'majutsushi/tagbar'
+  Plug 'vim-syntastic/syntastic'
 
-    Plug 'edkolev/tmuxline.vim'
-    Plug 'majutsushi/tagbar'
-    Plug 'vim-syntastic/syntastic'
+  "{{ to enable the powerline Plugin.
+  Plug 'powerline/powerline'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  "}}
 
-    "{{ to enable the powerline Plugin.
-    Plug 'powerline/powerline'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    "}}
+  Plug 'MarcWeber/vim-addon-mw-utils'
+  Plug 'tomtom/tlib_vim'
 
-    Plug 'MarcWeber/vim-addon-mw-utils'
-    Plug 'tomtom/tlib_vim'
+  Plug 'junegunn/vim-easy-align'
 
-    Plug 'junegunn/vim-easy-align'
+  Plug 'edkolev/promptline.vim'
+  Plug 'junegunn/vim-plug'
+  Plug 'tpope/vim-sensible'
 
-    Plug 'edkolev/promptline.vim'
-    Plug 'junegunn/vim-plug'
-    Plug 'tpope/vim-sensible'
+  " NERD tree will be loaded on the first invocation of NERDTreeToggle
+  " command
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-    " NERD tree will be loaded on the first invocation of NERDTreeToggle
-    " command
-    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  " Multiple commands
+  Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
-    " Multiple commands
-    Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+  " On-demand loading on both conditions
+  Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 
-    " On-demand loading on both conditions
-    Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
+  "{{ Git integration
+  " ---> git commands within vim <---
+  Plug 'tpope/vim-fugitive'
+  " ---> git changes on the gutter <---
+  Plug 'airblade/vim-gitgutter'
+  " ---> nerdtree git changes <---
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  "}}
 
-    "{{ Git integration
-    " ---> git commands within vim <---
-    Plug 'tpope/vim-fugitive'
-    " ---> git changes on the gutter <---
-    Plug 'airblade/vim-gitgutter'
-    " ---> nerdtree git changes <---
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    "}}
+  "{{ Autopairs
+  " ---> closing XML tags <---
+  " Plug 'alvan/vim-closetag'
+  " ---> files on which to activate tags auto-closing <---
+  " let g:closetag_filenames='*.html,*.xhtml,*.xml,*.vue,*.phtml,*.js,*.jsx,*.coffee,*.erb'
+  " ---> closing braces and brackets <---
+  Plug 'jiangmiao/auto-pairs'
+  "}}
 
-    "{{ Autopairs
-    " ---> closing XML tags <---
-    " Plug 'alvan/vim-closetag'
-    " ---> files on which to activate tags auto-closing <---
-    " let g:closetag_filenames='*.html,*.xhtml,*.xml,*.vue,*.phtml,*.js,*.jsx,*.coffee,*.erb'
-    " ---> closing braces and brackets <---
-    Plug 'jiangmiao/auto-pairs'
-    "}}
+  "{{ TMux - Vim integration
+  Plug 'christoomey/vim-tmux-navigator'
+  "}}
 
-    "{{ TMux - Vim integration
-    Plug 'christoomey/vim-tmux-navigator'
-    "}}
+  "{{ Configuring UltiSnips
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+  "}}
 
-    "{{ Configuring UltiSnips
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<tab>"
-    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-    "}}
+  "{{ Configuring YouCompleteMe
+  Plug 'valloric/youcompleteme', { 'do': './install.py'  }
 
-    "{{ Configuring YouCompleteMe
-    Plug 'valloric/youcompleteme', { 'do': './install.py'  }
+  " ---> youcompleteme configuration <---
+  let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
-    " ---> youcompleteme configuration <---
-    let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-
-    " ---> compatibility with another plugin (ultisnips) <---
-    let g:ycm_key_list_select_completion=[ '<C-n>', '<Down>'  ]
-    let g:ycm_key_list_previous_completion=[ '<C-p>', '<Up>'  ]
-    let g:SuperTabDefaultCompletionType='<C-n>'
-    " ---> disable preview window <---
-    set completeopt-=preview
-    "}}
-
+  " ---> compatibility with another plugin (ultisnips) <---
+  let g:ycm_key_list_select_completion=[ '<C-n>', '<Down>'  ]
+  let g:ycm_key_list_previous_completion=[ '<C-p>', '<Up>'  ]
+  let g:SuperTabDefaultCompletionType='<C-n>'
+  " ---> disable preview window <---
+  set completeopt-=preview
+  "}}
 call plug#end()
 
 
@@ -172,15 +170,15 @@ set smartcase
 " set switchbuf=useopen
 
 if exists('$TMUX')  " Support resizing in tmux
-        set ttymouse=xterm2
+  set ttymouse=xterm2
 endif
 
 if exists('$TMUX')
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
-        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 set background=dark
@@ -262,19 +260,19 @@ let g:airline#extensions#tmuxline#color_template='insert'
 
 
 let g:airline_filetype_overrides={
-      \ 'coc-explorer':  [ 'CoC Explorer', '' ],
-      \ 'defx':  ['defx', '%{b:defx.paths[0]}'],
-      \ 'fugitive': ['fugitive', '%{airline#util#wrap(airline#extensions#branch#get_head(),80)}'],
-      \ 'gundo': [ 'Gundo', '' ],
-      \ 'help':  [ 'Help', '%f' ],
-      \ 'minibufexpl': [ 'MiniBufExplorer', '' ],
-      \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ],
-      \ 'startify': [ 'startify', '' ],
-      \ 'vim-plug': [ 'Plugins', '' ],
-      \ 'vimfiler': [ 'vimfiler', '%{vimfiler#get_status_string()}' ],
-      \ 'vimshell': ['vimshell','%{vimshell#get_status_string()}'],
-      \ 'vaffle' : [ 'Vaffle', '%{b:vaffle.dir}' ],
-      \ }
+  \ 'coc-explorer':  [ 'CoC Explorer', '' ],
+  \ 'defx':  ['defx', '%{b:defx.paths[0]}'],
+  \ 'fugitive': ['fugitive', '%{airline#util#wrap(airline#extensions#branch#get_head(),80)}'],
+  \ 'gundo': [ 'Gundo', '' ],
+  \ 'help':  [ 'Help', '%f' ],
+  \ 'minibufexpl': [ 'MiniBufExplorer', '' ],
+  \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', 'NERD'), '' ],
+  \ 'startify': [ 'startify', '' ],
+  \ 'vim-plug': [ 'Plugins', '' ],
+  \ 'vimfiler': [ 'vimfiler', '%{vimfiler#get_status_string()}' ],
+  \ 'vimshell': ['vimshell','%{vimshell#get_status_string()}'],
+  \ 'vaffle' : [ 'Vaffle', '%{b:vaffle.dir}' ],
+  \ }
 "-------------------------------------------------------------------------
 "-------------------------------------------------------------------------
 "
@@ -435,9 +433,9 @@ command! Gob       !go build %
 autocmd! VimResized * :wincmd =
 
 augroup vimedit
-    autocmd! BufWritePost $MYVIMRC nested source $MYVIMRC
-    autocmd! BufWritePost,BufReadPost $MYVIMRC :call airline#load_theme()
-    autocmd! BufWritePost,BufReadPost $MYVIMRC :AirlineRefresh
+  autocmd! BufWritePost $MYVIMRC nested source $MYVIMRC
+  autocmd! BufWritePost,BufReadPost $MYVIMRC :call airline#load_theme()
+  autocmd! BufWritePost,BufReadPost $MYVIMRC :AirlineRefresh
 augroup END
 
 " doautocmd vimedit BufWritePost,BufReadPost $MYVIMRC
